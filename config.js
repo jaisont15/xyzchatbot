@@ -22,5 +22,7 @@ module.exports = {
         max: 10,
         idleTimeoutMillis: 30000,
     },
-    FB_PAGE_INBOX_ID: process.env.FB_PAGE_INBOX_ID
+    FB_PAGE_INBOX_ID: process.env.FB_PAGE_INBOX_ID,
+    API_AI_CLIENT_ACCESS_TOKEN: '235643f4652047efb833f50e27d5d490'
+
 };
