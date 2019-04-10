@@ -17,7 +17,7 @@ module.exports = {
             if (!error && response.statusCode == 200) {
 
                 var user = JSON.parse(body);
-                if (user.first_name.length > 0) {
+                if (/*user.first_name.length > 0*/ 0==0) {
                     var pool = new pg.Pool(config.PG_CONFIG);
                     pool.connect(function(err, client, done) {
                         if (err) {
@@ -25,7 +25,7 @@ module.exports = {
                         }
                         var rows = [];
                         client.query(`SELECT fb_id FROM users WHERE fb_id='${userId}' LIMIT 1`,
-                            function(err, result) {
+                            function(err, result) { 
                                 if (err) {
                                     console.log('Query error: ' + err);
                                 } else {
