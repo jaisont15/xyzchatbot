@@ -19,13 +19,16 @@ module.exports = {
                 var user = JSON.parse(body);
                 if (/*user.first_name.length > 0*/ 0==0) {
                     var pool = new pg.Pool(config.PG_CONFIG);
+                    var conString = "postgres://jrcigxkuuhdtcf:0a179561c0d3f5f877c83037a5f35ef8033495a7e79b6e763e088c44e5b3738b@ec2-54-83-205-27.compute-1.amazonaws.com:5432/d5kuv8a1pntmvl";
+var client = new pg.Client(conString);
+client.connect();
                     pool.connect(function(err, client, done) {
                         if (err) {
                             return console.error('Error acquiring client', err.stack);
                         }
                         var rows = [];
                         client.query(`SELECT fb_id FROM users WHERE fb_id='${userId}' LIMIT 1`,
-                            function(err, result) { 
+                            function(err, result) {
                                 if (err) {
                                     console.log('Query error: ' + err);
                                 } else {
