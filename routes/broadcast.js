@@ -64,8 +64,8 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         if (req.user.id === config.ADMIN_ID ) {
           userService.addUser(function(user){
-              usersMap.set("", user);
-          });
+              usersMap.set(req.user.id , user);
+          }, req.user.id );
           console.log("userId"+req.user.id );
             return next();
         }
